@@ -2,7 +2,7 @@ import requests
 import json
 
 def get_response(user_content):
-    url = "https://spark-api-open.xf-yun.com/v1/chat/completions"
+    url = "https://spark-api-open.xf-yun.com/v1/chat/completions" #这是API的端点URL。
     data = {
         "max_tokens": 500,
         "top_k": 4,
@@ -14,14 +14,14 @@ def get_response(user_content):
             },
             {
                 "role": "user",
-                "content": user_content  # 使用传入的用户提问内容
+                "content": user_content
             }
         ],
         "model": "generalv3.5"
     }
     data["stream"] = True
     header = {
-        "Authorization": "Bearer FfAhHFJGShMeVjZrbRzi:qEiKhpvIcyGnBbNfDPYW"
+        "Authorization": "Bearer FfAhHFJGShMeVjZrbRzi:qEiKhpvIcyGnBbNfDPYW" #这里设置了请求头，其中包含了API的授权信息。
     }
     response = requests.post(url, headers=header, json=data, stream=True)
 
